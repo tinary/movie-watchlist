@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Watchlist } from './components/Watchlist';
 import { Watched } from './components/Watched';
 import { Add } from './components/Add';
+import { LandingPage } from './components/LandingPage';
 import './App.css';
 
 import { GlobalProvider } from './context/GlobalState';
@@ -17,6 +18,10 @@ function App() {
         <Switch>
 
           <Route exact path="/">
+            <LandingPage />
+          </Route>
+
+          <Route path="/watchlist">
             <Watchlist />
           </Route>
 

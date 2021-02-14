@@ -1,7 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { ModalStyle } from './ModalStyle';
+import { MovieDetail } from './MovieDetail';
 
 export const ResultCard = ({movie}) => {
+
+  const [showModal, setShowModal] = useState(false);
+
   // grab our action from GlobalContext
   const { addMovieToWatchlist,
           addMovieToWatched,
@@ -16,6 +21,11 @@ export const ResultCard = ({movie}) => {
   const watchlistDisabled = storedMovie ? true : storedMovieWatched ? true : false;
 
   const watchedDisabled = storedMovieWatched ? true: false;
+
+  const openModal = () => {
+    setShowModal(prev => !prev);
+  };
+
 
   return (
     <div className="result-card">
@@ -51,6 +61,14 @@ export const ResultCard = ({movie}) => {
           >
             Add to Watched
           </button>
+
+          <button className="btn"
+            onClick={() => openModal(movie)}
+          >
+            View Detail
+          </button>
+          <MovieDetail movie={movie} showModal={showModal} setShowModal={setShowModal} />
+          <ModalStyle />
         </div>
       </div>
 

@@ -27,6 +27,10 @@ export default (state, action) => {
         ...state,
         watched: state.watched.filter(movie => movie.id !== action.payload)
       };
+    case "VIEW_MOVIE_DETAILS":
+      return {
+        movieDetail: state.movieDetail = false
+      }
     default:
       return state;
   }

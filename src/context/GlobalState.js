@@ -5,6 +5,7 @@ import AppReducer from './AppReducer';
 const initialState = {
   watchlist: localStorage.getItem('watchlist') ? JSON.parse(localStorage.getItem('watchlist')) : [],
   watched: localStorage.getItem('watched') ? JSON.parse(localStorage.getItem('watched')) : [],
+  movieDetail: false
 };
 
 // create context
@@ -45,6 +46,11 @@ export const GlobalProvider = props => {
     dispatch({type: "REMOVE_MOVIE_FROM_WATCHED", payload: id});
   };
 
+  // // view movie detail
+  // const viewMovieDetail = (movie) => {
+  //   dispatch({type: "VIEW_MOVIE_DETAILS", payload: movie})
+  // };
+
   
   return (
     <GlobalContext.Provider 
@@ -56,6 +62,7 @@ export const GlobalProvider = props => {
         addMovieToWatched,
         moveToWatchlist,
         removeFromWatched
+        // viewMovieDetail
       }}>
       {props.children}
     </GlobalContext.Provider>
